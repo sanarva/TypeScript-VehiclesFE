@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars</title>
+
+    
+    <!--Estilos CSS propios de bootstrap (version 4.1.3)-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!-- Añado estilos css / -->
+    <style> 
+        /*Se coge la letra de google fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+        /*Aplico estilos*/
+        form #idDivPrintInfo{
+        font-family: 'Questrial', sans-serif;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <h2 class="my-3 text-center">CREATE A CAR</h2>
+        <form id="idCarForm"  name="nameCarForm">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="plate">Plate:</label>
+                    <input type="text"  class="form-control" id="idPlate" name = "namePlate" placeholder="Enter plate number">
+                    <div class="invalid-feedback" id="errorPlate"></div>
+                </div>
+                <div class="form-group  col-md-4">
+                    <label for="brand">Brand:</label>
+                    <input type="text"  class="form-control" id="idBrand" name = "nameBrand" placeholder="Enter brand">
+                    <div class="invalid-feedback" id="errorBrand"></div>
+                </div>
+                <div class="form-group  col-md-4">
+                    <label for="color">Color:</label>
+                    <input type="text"  class="form-control" id="idColor" name = "nameColor" placeholder="Enter color">
+                    <div class="invalid-feedback" id="errorColor"></div>
+                </div>
+                
+            </div>
+        <button type="button" id="btnCreateCar" class="btn btn-primary" onclick="createCar()">Create car</button>
+        </form>
+        
+    </div>
+    
+     
+    <div id="wheelsDiv" class="container d-none">
+        <div class="row">
+            <p class="my-3 text-left">Please, enter information about wheels :</p>
+        </div>
+        <form id="idWheelsForm"  name="nameCarForm">
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="wheelBranch1">Wheel 1:</label>
+                    <input type="text" class="form-control" id="idWheelBranch1" name = "nameWheelBranch1" placeholder="Enter Branch wheel 1">
+                    <div class="invalid-feedback" id="errorwheelBranch1"></div>
+                </div>
+                
+                <div class="form-group col-md-3">
+                    <label for="wheelBranch1">Wheel 2:</label>
+                    <input type="text" class="form-control" id="idWheelBranch2" name = "nameWheelBranch2" placeholder="Enter Branch wheel 2">
+                    <div class="invalid-feedback" id="errorwheelBranch2"></div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="wheelBranch1">Wheel 3:</label>
+                    <input type="text" class="form-control" id="idWheelBranch3" name = "nameWheelBranch3" placeholder="Enter Branch wheel 3">
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="wheelBranch1">Wheel 4:</label>
+                    <input type="text" class="form-control" id="idWheelBranch4" name = "nameWheelBranch4" placeholder="Enter Branch wheel 4">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <input type="text"  class="form-control" id="idWheelDiam1" name = "nameWheelDiam1" placeholder="Enter diametre wheel 1">
+                    <div class="invalid-feedback" id="errorwheelDiam1"></div>
+                </div>
+                
+                <div class="form-group col-md-3">
+                    <input type="text"  class="form-control" id="idWheelDiam2" name = "nameWheelDiam2" placeholder="Enter diametre wheel 2">
+                    <div class="invalid-feedback" id="errorwheelDiam2"></div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <input type="text"  class="form-control" id="idWheelDiam3" name = "nameWheelDiam3" placeholder="Enter diametre wheel 3">
+                    <div class="invalid-feedback" id="errorwheelDiam3"></div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <input type="text"  class="form-control" id="idWheelDiam4" name = "nameWheelDiam4" placeholder="Enter diametre wheel 4">
+                    <div class="invalid-feedback" id="errorwheelDiam4"></div>
+
+                </div>
+            </div>
+
+            <button type="button" id= "btnCreateWheel" class="btn btn-primary" onclick="createWheels()">Add Weels</button> 
+        </form>
+        
+    </div>
+    
+    <div id= "idDivPrintInfo" class="container my-4 py-2  border border-info d-none"> 
+        <p class="font-weight-bold">Car has been correctly created:</p>
+        <div class="row">
+            <div class="col-md-4">
+                <p id=showPlate></p>
+            </div>
+            <div class="col-md-4">
+                <p id=showBrand></p>
+            </div>
+            <div class="col-md-4">
+                <p id=showColor></p>
+            </div>
+        </div>
+
+        <p class="font-weight-bold">Find below wheels information:</p>
+        <div class="row">
+            <div class="col-md-3">
+                <p >Whell 1:</p>
+                <p id=showBrand1></p>
+                <p id=showDiameter1></p>
+            </div>
+            <div class="col-md-3">
+                <p>Whell 2:</p>
+                <p id=showBrand2></p>
+                <p id=showDiameter2></p>
+            </div>
+            <div class="col-md-3">
+                <p>Whell 3:</p>
+                <p id=showBrand3></p>
+                <p id=showDiameter3></p>
+            </div>
+
+            <div class="col-md-3">
+                <p>Whell 4:</p>
+                <p id=showBrand4></p>
+                <p id=showDiameter4></p>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center mt-3">
+            <button type="button" class="btn btn-info" onclick="hideInfo()">Close</button> 
+        </div>
+    </div>
+     
+     
+</body>
+
+<script src="../models/car.js"></script>
+<script src="../models/wheel.js"></script>
+<script src="../controllers/controller.js"></script>
+
+<!--Scripts de bootstrap 4.1.3-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</html>
+
+
+
+ 
+
+    
